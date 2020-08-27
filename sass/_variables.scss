@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'fff_forward';
+    src: url('/fonts/fff-forward.TTF') format('truetype'),
+         url('/fonts/fff-forward-webfont.woff2') format('woff2'),
+         url('/fonts/fff-forward-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@mixin m-box-shadow($pixels, $color) {
+    box-shadow: 0 $pixels*4 0 $color;
+}
+
+@mixin m-text-shadow($pixels, $color) {
+    text-shadow: 0 $pixels*4 0 $color;
+}
+
+$f-body: 'fff_forward', sans-serif;
+
+
+$c-white: white;
+$c-highlight: #FFC34D;
+
+$c-webApps: #FFC34D;
+$c-intMedia: #14CC80;
+$c-massMedia: #FF5983;
+$c-digComm: #266EFF;
+
+.clickable {
+    cursor: pointer;
+}

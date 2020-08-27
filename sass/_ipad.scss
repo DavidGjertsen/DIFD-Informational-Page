@@ -1,0 +1,309 @@
+//Defaults
+
+body {
+    box-sizing: border-box;
+    color: $c-highlight;
+    font-family: $f-body;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+#content {
+    padding: 0;
+    margin: 0;
+}
+
+$bgs: (
+    "surface": "homescreen.gif",
+    "cave": "cave.jpg"
+);
+
+@each $bg, $url in $bgs {
+    .bg-#{$bg} {
+        background-image: url('../images/' + $url);
+    }
+}
+
+.bg-surface {
+    background-color: #8CB1FF;
+}
+
+.bg-cave {
+    background-color: #4D1F4D;
+}
+
+@keyframes a-startColor {
+    from {
+        color: $c-highlight;
+        @include m-text-shadow(1px, #A64B4B);
+    }
+    to {
+        color: #FFEECC;
+        @include m-text-shadow(1px, $c-highlight);
+    }
+}
+
+@keyframes a-scroll {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -1024px 0;
+    }
+}
+
+.bg-scroll {
+    -webkit-animation-name: a-scroll;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: backwards;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-name: a-scroll;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+    animation-timing-function: ease-in-out;
+}
+
+#rotationPopup {
+    display: none;
+}
+
+//Homepage
+
+h1 {
+    font-size: 46pt;
+    padding: 12px;
+    //background-color: #A63A82;
+    width: 880px - 40px;
+    margin: 0 auto;
+    //border: 8px solid $c-highlight;
+
+    //@include m-box-shadow(1px, #A64B4B);
+    @include m-text-shadow(1px, #4D1F4D);
+}
+
+h2 {
+    @include m-text-shadow(1px, #4D1F4D);
+    margin-top: 96px;
+    margin-bottom: 24px;
+    font-size: 20pt;
+    color: white;
+}
+
+.startButton {
+    font-size: 36pt;
+    @include m-text-shadow(1px, #A64B4B);
+    margin-top: 188px;
+
+    -webkit-animation-name: a-startColor;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-name: a-startColor;
+    animation-duration: 1.5s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+//Character selection
+#charSelect {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto repeat(2, 1fr);
+    grid-gap: 16px;
+
+    h2 {
+        grid-column: 1 / -1;
+        margin: 24px;
+    }
+
+    section {
+        background-color: #351F34;
+        padding: 12px;
+        @include m-box-shadow(1px, #351F34);
+
+        h3 {
+            margin: 8px;
+            color: white;
+            @include m-text-shadow(.5px, $c-highlight);
+        }
+
+        &:nth-of-type(1) {
+            border: 8px solid $c-webApps;
+        }
+
+        &:nth-of-type(2) {
+            border: 8px solid $c-intMedia;
+        }
+
+        &:nth-of-type(3) {
+            border: 8px solid $c-digComm;
+        }
+
+        &:nth-of-type(4) {
+            border: 8px solid $c-massMedia;
+        }
+    }
+}
+
+#charDetail, #yearOne, #yearTwo, #yearThree, #yearFour, #levelBoss, #theEnd {
+    color: white;
+    width: 80%;
+    margin: 0 auto;
+
+    h2 {
+        @include m-text-shadow(1px, $c-highlight);
+        font-size: 30pt;
+        margin-top: 36px;
+    }
+
+    h3 {
+        color: #ff5983;
+    }
+
+    p {
+        font-size: 12pt;
+        line-height: 2;
+
+        span {
+            color: $c-highlight;
+        }
+    }
+
+    img {
+        position: absolute;
+        top: 500px / 768px * 100%;
+        left: 416px / 1024px * 100%;
+    }
+
+    .support {
+        &-1 {
+            top: 460px / 768px * 100%;
+            left: 300px / 1024px * 100%;
+        }
+        &-2 {
+            left: 240px / 1024px * 100%;
+        }
+        &-3 {
+            top: 540px / 768px * 100%;
+            left: 180px / 1024px * 100%;
+        }
+    }
+
+    .treasure {
+        position: static;
+    }
+
+    .bossglow {
+        top: 0;
+        left: 0;
+        opacity: .75;
+        z-index: -100;
+    }
+
+    #level {
+        position: absolute;
+        top: 680px / 768px * 100%;
+        left: 470px / 1024px * 100%;
+        text-align: center;
+    }
+
+    .arrow {
+        font-size: 20pt;
+
+        &-back {
+            @extend .arrow;
+            position: absolute;
+            top: 600px / 768px * 100%;
+            left: 20px / 1024px * 100%;
+            color: $c-massMedia;
+            @include m-text-shadow(1px, #4D1F4D);
+        }
+
+        &-continue {
+            @extend .arrow;
+            position: absolute;
+            top: 600px / 768px * 100%;
+            right: 20px / 1024px * 100%;
+            color: $c-highlight;
+            @include m-text-shadow(1px, #A64B4B);
+            //animation-name: a-startColor;
+            //animation-duration: 1.5s;
+            //animation-direction: alternate;
+            //animation-iteration-count: infinite;
+            //animation-timing-function: ease-in-out;
+        }
+
+        &-continue-final {
+            @extend .arrow;
+            position: absolute;
+            top: 600px / 768px * 100%;
+            left: 20px / 1024px * 100%;
+            color: $c-highlight;
+            @include m-text-shadow(1px, #A64B4B);
+        }
+    }
+
+    #stats {
+        width: 350px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 40% 60%;
+        grid-gap: 4px;
+
+        p {
+            text-align: right;
+            padding: 0;
+            margin: 4px;
+        }
+
+        .bar {
+            background-color: #642DB3;
+            margin: 4px 0;
+
+            div {
+                width: 100%;
+                height: 100%;
+            }
+
+            .yellow {
+                background-color: $c-webApps;
+            }
+
+            .green {
+                background-color: $c-intMedia;
+            }
+
+            .blue {
+                background-color: $c-digComm;
+            }
+
+            .red {
+                background-color: $c-massMedia;
+            }
+        }
+    }
+
+    form {
+        input {
+            font-family: $f-body;
+            color: $c-highlight;
+            padding: 4px;
+            background-color: #A53A82;
+            border: 4px solid $c-highlight;
+
+            &[type='email'] {
+                width: 300px;
+            }
+        }
+    }
+}

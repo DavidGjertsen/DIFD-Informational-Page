@@ -1,0 +1,18 @@
+//Animate.css
+@import "animate";
+
+//Import variables
+@import "variables";
+
+//Import ipad layout
+@import "ipad";
+
+//Import screen rotation/size popup when the screen is the wrong size
+//Too small
+@media screen and (max-width: 1023px) {
+    @import "rotation";
+}
+//Too large
+@media screen and (min-width: 1025px) {
+    @import "rotation";
+}

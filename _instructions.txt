@@ -1,0 +1,3 @@
+Upload your HTML files, CSS folder, Images folder, and JS folder directly to this repo; in other words, do not upload a folder called projectXX-etc that contains those files.
+
+You SHOULD be using either Terminal or an editor like Atom or VS Code to Push your files to your repo, but if you have problems with that you can always log into GitHub, go to the project repo, and use the browser to upload your files. Refer to the slides from Git lecture for details.

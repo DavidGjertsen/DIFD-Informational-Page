@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name='viewport' content='width=device-width, media=screen' />
+        <link rel='stylesheet' type='text/css' href='css/style.css' media='screen' />
+        <title>Your Journey | Winthrop DIFD</title>
+    </head>
+    <body class='bg-cave' onload='doTimeoutOnThisPage();'>
+        <div id='content'>
+            <div id='charSelect'>
+                <h2>Choose your character</h2>
+                <section class='clickable' onclick='selectCharacter("webApps")'>
+                    <h3>Web Application Design</h3>
+                    <img src='images/web_apps.gif' alt='The web application designer' />
+                </section>
+                <section class='clickable' onclick='selectCharacter("intMedia")'>
+                    <h3>Interactive Media</h3>
+                    <img src='images/im.gif' alt='The interactive media designer' />
+                </section>
+                <section class='clickable' onclick='selectCharacter("digCommerce")'>
+                    <h3>Digital Commerce</h3>
+                    <img src='images/commerce.gif' alt='The digital commerce person' />
+                </section>
+                <section class='clickable' onclick='selectCharacter("massMedia")'>
+                    <h3>Digital Mass Media</h3>
+                    <img src='images/media.gif' alt='The mass media person' />
+                </section>
+            </div>
+        </div>
+
+        <div id='rotationPopup'>
+            <div>
+                <h2>Uh oh!</h2>
+                <p>This application is designed for an iPad in landscape mode.</p>
+                <p>Please rotate your device to continue.</p>
+            </div>
+        </div>
+        <script src='js/main.js'></script>
+    </body>
+</html>
