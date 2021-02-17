@@ -1,19 +1,80 @@
 //Load JSON
-let myRequest = new Request('data/journey.json');
+let myRequest = new Request('../data/journey.json');
 let mainObj, pageContent, charSelection, capstone, ending;
 
-fetch(myRequest).then((response) => {
-    return response.json();
-}).then((data) => {
-    mainObj = data;
-    pageContent = data.pageContent;
-    charSelection = data.charSelection;
-    capstone = data.capstone;
-    ending = data.ending;
-    console.log(mainObj);
-}).catch((error) => {
-    console.error(error);
-});
+
+mainObj = {
+    "pageContent" : {
+        "webApps" : {
+            "yearOne" : "You are introduced to basic programming. <br>You learn how to Program in Java, and are introduced to HTML, CSS, and JavaScript. You also learn more about your major of choice, Digital Information Design, and what sort of career paths you will have.",
+            "yearTwo" : "In your second year you are introduced to more advanced programming. <br>You explore C++, and further your understanding of JavaScript by learning how to host servers in Node.js. You learn quantitative skills, and apply mathematics and statistics to your programs.",
+            "yearThree" : "You deepen your understanding of backend web design. <br> You learn to create and maintain databases using SQL, as well as designing and developing web applications. You are also given a brief overview of Digital Media and Digital Commerce, two other concentrations in your major.",
+            "yearFour" : "You study interface design and how to apply those skills to your web applications. You also learn software engineering, as well as discuss the ethics of your chosen career path to ensure what you learn isn't used to further the plans of some evil litch or dark overlord."
+        },
+        "intMedia" : {
+            "yearOne" : "You are introduced to the fundamentals of design. <br>You learn the importance of good craft, as well as color theory and how to create good compositions. You also learn the computer tools that you'll be using for your career, such as Adobe Photoshop and Illustrator.",
+            "yearTwo" : "You learn more design skills by studying graphic design and typography. <br>You are introduced to design for the web using HTML, CSS, SASS, and JavaScript. At the end of this year, you go through <span>Specialization Review,</span> where your work thus far is evaluated.",
+            "yearThree" : "With Specialization Review behind you, you step into advanced-level courses. <br>You study design history and concepts in order to better solve complicated design problems. You also deepen your web design skills, and select an elective to add to your repetoire: Mass Communication, Music, or Graphic Design",
+            "yearFour" : "Your fourth and final year. <br>You study interface design as well as multimedia production in order to make your websites more user-friendly, and discuss the ethics of your chosen career path. You also deepen your understanding of your elective of choice."
+        },
+        "digCommerce" : {
+            "yearOne" : "You are introduced to Digital Information Design. <br>You learn about the other concentrations that make up Digital Information Design, and get an overview of programming in Java, HTML, CSS, and JavaScript.",
+            "yearTwo" : "Your second year, you are ready to get down to business. <br>You study financing, analytics, and statistics and how to apply these skills to the web. You also study multimedia storytelling, and gain an understanding of design for the web.",
+            "yearThree" : "You deepen your understanding of business by researching information systems. You learn how to reach millions of consumers via the internet through advertising and digital marketing.",
+            "yearFour" : "You study advanced marketing and how to apply business skills to the electronic world. You also discuss the ethics of your chosen career, as well as select an elective to allow you to specialize in an area of Digital Commerce."
+        },
+        "massMedia" : {
+            "yearOne" : "You begin by learning public speaking and writing. <br>You are also introduced to the various concentrations of Digital Information Design, and learn basic programming in Java, HTML, CSS, and JavaScript.",
+            "yearTwo" : "You are introduced to multimedia production. <br>You learn the digital tools used to produce multimedia, such as Adobe Premiere. You are given a cursory overview of accounting and statistics, and learn how to design for the web.",
+            "yearThree" : "Your third year, you continue to study multimedia. <br>You learn how to produce content for television audiences and how those skills apply to the web. You also select an elective that will allow you to specialize in a specific area of Digital Mass Media.",
+            "yearFour" : "You continue to deepen your understanding in your chosen elective. You also study design for multimedia content, and discuss the ethics of your chosen career path to ensure the skills you learn are not misused."
+        }
+    },
+
+    "charSelection" : {
+        "webApps" : {
+            "concentration" : "Web Application Design",
+            "body" : "In this code-heavy concentration, you'll hone your skills as a backend programmer by learning multiple programming languages, the protocols that power the web, how to create and maintain databases, and software management skills.",
+            "stats" : [100, 40, 20, 20],
+            "image" : "web_apps.gif"
+        },
+        "intMedia" : {
+            "concentration" : "Interactive Media",
+            "body" : "With a healthy focus on design, Interactive Media will hone your skills for front-end web programming. You'll learn how to solve increasingly-complex design problems on the web and in emerging digital fields and come to effective, successful solutions.",
+            "stats" : [40, 100, 20, 20],
+            "image" : "im.gif"
+        },
+        "digCommerce" : {
+            "concentration" : "Digital Commerce",
+            "body" : "The emergence of the web has huge potential for marketing and commerce in the modern age. In this concentration you'll learn marketing strategies that are successful on the web, as well as how to use digital media to reach millions of consumers over the internet.",
+            "stats" : [20, 20, 100, 40],
+            "image" : "commerce.gif"
+        },
+        "massMedia" : {
+            "concentration" : "Digital Mass Media",
+            "body" : "In Digital Mass Media, you'll learn how to shape web content to reach a specific audience, how to gather and present information, and how the internet is shaping - and will continue to shape - mass media and marketing communication with new and emerging technologies. ",
+            "stats" : [20, 20, 40, 100],
+            "image" : "media.gif"
+        }
+    },
+
+    "capstone" : {
+        "explanation" : "Teaming up with another student from each concentration, put everything you've learned over the last four years to the test and take on a real web project for a real-world client.<br><span>This will be the toughest challenge that you face.</span>",
+        "image" : "bossglow.gif"
+    },
+
+    "ending" : {
+        "text1" : "Congratulations! You found the Golden Graduation Cap. However, there are more journeys to be had with Digital Information Design...",
+        "text2" : "Want to learn more about DIFD? Enter your email:",
+        "image" : "treasure.gif"
+    }
+};
+pageContent = mainObj.pageContent;
+charSelection = mainObj.charSelection;
+capstone = mainObj.capstone;
+ending = mainObj.ending;
+console.log(mainObj);
+
 
 //Function to control scrolling the background during "page" transitions
 function scrollBackground() {
@@ -96,7 +157,7 @@ function selectCharacter(concentration) {
                 stat3 = charSelection.webApps.stats[2];
                 stat4 = charSelection.webApps.stats[3];
                 //Character image
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.webApps.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.webApps.image + "'/>";
                 //Arrows
                 newContent += arrows;
                 break;
@@ -113,7 +174,7 @@ function selectCharacter(concentration) {
                 stat3 = charSelection.intMedia.stats[2];
                 stat4 = charSelection.intMedia.stats[3];
                 //Character image
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.intMedia.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.intMedia.image + "'/>";
                 newContent += arrows;
                 break;
 
@@ -129,7 +190,7 @@ function selectCharacter(concentration) {
                 stat3 = charSelection.digCommerce.stats[2];
                 stat4 = charSelection.digCommerce.stats[3];
                 //Character image
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.digCommerce.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.digCommerce.image + "'/>";
                 newContent += arrows;
                 break;
 
@@ -145,7 +206,7 @@ function selectCharacter(concentration) {
                 stat3 = charSelection.massMedia.stats[2];
                 stat4 = charSelection.massMedia.stats[3];
                 //Character image
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.massMedia.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.massMedia.image + "'/>";
                 newContent += arrows;
                 break;
             default:
@@ -182,25 +243,25 @@ function level1(concentration) {
             case "webApps":
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.webApps.yearOne + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.webApps.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.webApps.image + "'/>";
                 newContent += arrows;
                 break;
             case "intMedia":
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.intMedia.yearOne + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.intMedia.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.intMedia.image + "'/>";
                 newContent += arrows;
                 break;
             case "digCommerce":
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.digCommerce.yearOne + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.digCommerce.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.digCommerce.image + "'/>";
                 newContent += arrows;
                 break;
             case "massMedia":
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.massMedia.yearOne + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.massMedia.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.massMedia.image + "'/>";
                 newContent += arrows;
                 break;
             default:
@@ -242,27 +303,27 @@ function level2(concentration) {
             case "webApps":
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.webApps.yearTwo + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.webApps.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.webApps.image + "'/>";
                 newContent += arrows;
                 break;
             case "intMedia":
                 newContent += "<h3 class='animated fadeIn delay-2s'>Mini Boss</h3>"
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.intMedia.yearTwo + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.intMedia.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.intMedia.image + "'/>";
                 newContent += arrows;
-                newContent += '<img class="bossglow animated fadeIn delay-1s slower" src="../images/' + capstone.image + '">';
+                newContent += '<img class="bossglow animated fadeIn delay-1s slower" src="images/' + capstone.image + '">';
                 break;
             case "digCommerce":
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.digCommerce.yearTwo + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.digCommerce.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.digCommerce.image + "'/>";
                 newContent += arrows;
                 break;
             case "massMedia":
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.massMedia.yearTwo + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.massMedia.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.massMedia.image + "'/>";
                 newContent += arrows;
                 break;
             default:
@@ -302,25 +363,25 @@ function level3(concentration) {
             case "webApps":
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.webApps.yearThree + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.webApps.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.webApps.image + "'/>";
                 newContent += arrows;
                 break;
             case "intMedia":
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.intMedia.yearThree + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.intMedia.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.intMedia.image + "'/>";
                 newContent += arrows;
                 break;
             case "digCommerce":
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.digCommerce.yearThree + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.digCommerce.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.digCommerce.image + "'/>";
                 newContent += arrows;
                 break;
             case "massMedia":
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.massMedia.yearThree + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.massMedia.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.massMedia.image + "'/>";
                 newContent += arrows;
                 break;
             default:
@@ -360,25 +421,25 @@ function level4(concentration) {
             case "webApps":
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.webApps.yearFour + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.webApps.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.webApps.image + "'/>";
                 newContent += arrows;
                 break;
             case "intMedia":
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.intMedia.yearFour + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.intMedia.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.intMedia.image + "'/>";
                 newContent += arrows;
                 break;
             case "digCommerce":
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.digCommerce.yearFour + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.digCommerce.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.digCommerce.image + "'/>";
                 newContent += arrows;
                 break;
             case "massMedia":
                 newContent += "<p class='animated fadeIn delay-2s'>" + pageContent.massMedia.yearFour + "</p>";
                 newContent += "<p class='animated fadeIn delay-3s'>Your understanding increases... <span>level up!</span></p>";
-                newContent += "<img class='animated fadeInLeftBig slow' src='../images/" + charSelection.massMedia.image + "'/>";
+                newContent += "<img class='animated fadeInLeftBig slow' src='images/" + charSelection.massMedia.image + "'/>";
                 newContent += arrows;
                 break;
             default:
@@ -414,35 +475,35 @@ function levelBoss(concentration) {
 
         switch(concentration) {
             case "webApps":
-                newContent += '<img class="animated fadeInLeftBig slow" src="../images/' + charSelection.webApps.image + '">';
-                newContent += '<img class="support-1 animated fadeInLeftBig delay-1s slow" src="../images/' + charSelection.intMedia.image + '">';
-                newContent += '<img class="support-2 animated fadeInLeftBig delay-1s slow" src="../images/' + charSelection.digCommerce.image + '">';
-                newContent += '<img class="support-3 animated fadeInLeftBig delay-1s slow" src="../images/' + charSelection.massMedia.image + '">';
+                newContent += '<img class="animated fadeInLeftBig slow" src="images/' + charSelection.webApps.image + '">';
+                newContent += '<img class="support-1 animated fadeInLeftBig delay-1s slow" src="images/' + charSelection.intMedia.image + '">';
+                newContent += '<img class="support-2 animated fadeInLeftBig delay-1s slow" src="images/' + charSelection.digCommerce.image + '">';
+                newContent += '<img class="support-3 animated fadeInLeftBig delay-1s slow" src="images/' + charSelection.massMedia.image + '">';
                 break;
             case "intMedia":
-                newContent += '<img class="animated fadeInLeftBig slow" src="../images/' + charSelection.intMedia.image + '">';
-                newContent += '<img class="support-1 animated fadeInLeftBig delay-1s slow" src="../images/' + charSelection.webApps.image + '">';
-                newContent += '<img class="support-2 animated fadeInLeftBig delay-1s slow" src="../images/' + charSelection.digCommerce.image + '">';
-                newContent += '<img class="support-3 animated fadeInLeftBig delay-1s slow" src="../images/' + charSelection.massMedia.image + '">';
+                newContent += '<img class="animated fadeInLeftBig slow" src="images/' + charSelection.intMedia.image + '">';
+                newContent += '<img class="support-1 animated fadeInLeftBig delay-1s slow" src="images/' + charSelection.webApps.image + '">';
+                newContent += '<img class="support-2 animated fadeInLeftBig delay-1s slow" src="images/' + charSelection.digCommerce.image + '">';
+                newContent += '<img class="support-3 animated fadeInLeftBig delay-1s slow" src="images/' + charSelection.massMedia.image + '">';
                 break;
             case "digCommerce":
-                newContent += '<img class="animated fadeInLeftBig slow" src="../images/' + charSelection.digCommerce.image + '">';
-                newContent += '<img class="support-1 animated fadeInLeftBig delay-1s slow" src="../images/' + charSelection.webApps.image + '">';
-                newContent += '<img class="support-2 animated fadeInLeftBig delay-1s slow" src="../images/' + charSelection.intMedia.image + '">';
-                newContent += '<img class="support-3 animated fadeInLeftBig delay-1s slow" src="../images/' + charSelection.massMedia.image + '">';
+                newContent += '<img class="animated fadeInLeftBig slow" src="images/' + charSelection.digCommerce.image + '">';
+                newContent += '<img class="support-1 animated fadeInLeftBig delay-1s slow" src="images/' + charSelection.webApps.image + '">';
+                newContent += '<img class="support-2 animated fadeInLeftBig delay-1s slow" src="images/' + charSelection.intMedia.image + '">';
+                newContent += '<img class="support-3 animated fadeInLeftBig delay-1s slow" src="images/' + charSelection.massMedia.image + '">';
                 break;
             case "massMedia":
-                newContent += '<img class="animated fadeInLeftBig slow" src="../images/' + charSelection.massMedia.image + '">';
-                newContent += '<img class="support-1 animated fadeInLeftBig delay-1s slow" src="../images/' + charSelection.webApps.image + '">';
-                newContent += '<img class="support-2 animated fadeInLeftBig delay-1s slow" src="../images/' + charSelection.intMedia.image + '">';
-                newContent += '<img class="support-3 animated fadeInLeftBig delay-1s slow" src="../images/' + charSelection.digCommerce.image + '">';
+                newContent += '<img class="animated fadeInLeftBig slow" src="images/' + charSelection.massMedia.image + '">';
+                newContent += '<img class="support-1 animated fadeInLeftBig delay-1s slow" src="images/' + charSelection.webApps.image + '">';
+                newContent += '<img class="support-2 animated fadeInLeftBig delay-1s slow" src="images/' + charSelection.intMedia.image + '">';
+                newContent += '<img class="support-3 animated fadeInLeftBig delay-1s slow" src="images/' + charSelection.digCommerce.image + '">';
                 break;
             default:
                 console.error('You get the point.');
                 break;
         }
         newContent += "<p id='level' class='animated fadeInLeftBig slow'>Level 4</p>";
-        newContent += '<img class="bossglow animated fadeIn delay-1s slower" src="../images/' + capstone.image + '">';
+        newContent += '<img class="bossglow animated fadeIn delay-1s slower" src="images/' + capstone.image + '">';
         newContent += arrows;
         newContent += '</div>';
         content.innerHTML = newContent;
@@ -461,22 +522,22 @@ function theEnd(concentration) {
 
         let newContent = '<div id="theEnd"><h2 class="animated fadeInDown delay-1s">Your Journey is Complete</h2>';
         newContent += '<p class="animated fadeIn delay-2s">' + ending.text1 + '</p>';
-        newContent += '<img class="treasure animated bounceIn delay-3s" src="../images/' + ending.image +'">';
+        newContent += '<img class="treasure animated bounceIn delay-3s" src="images/' + ending.image +'">';
         newContent += '<p class="animated fadeIn delay-2s">' + ending.text2 + '</p>';
         newContent += '<form class="animated fadeIn delay-2s"> <input type="email" name="email" placeholder="Email"> <input id="submit" type="submit" value="Submit"> </form>';
 
         switch(concentration) {
             case "webApps":
-                newContent += '<img class="animated fadeInLeftBig slow" src="../images/' + charSelection.webApps.image + '">';
+                newContent += '<img class="animated fadeInLeftBig slow" src="images/' + charSelection.webApps.image + '">';
                 break;
             case "intMedia":
-                newContent += '<img class="animated fadeInLeftBig slow" src="../images/' + charSelection.intMedia.image + '">';
+                newContent += '<img class="animated fadeInLeftBig slow" src="images/' + charSelection.intMedia.image + '">';
                 break;
             case "digCommerce":
-                newContent += '<img class="animated fadeInLeftBig slow" src="../images/' + charSelection.digCommerce.image + '">';
+                newContent += '<img class="animated fadeInLeftBig slow" src="images/' + charSelection.digCommerce.image + '">';
                 break;
             case "massMedia":
-                newContent += '<img class="animated fadeInLeftBig slow" src="../images/' + charSelection.massMedia.image + '">';
+                newContent += '<img class="animated fadeInLeftBig slow" src="images/' + charSelection.massMedia.image + '">';
                 break;
             default:
                 console.error('You know the drill');
@@ -484,7 +545,7 @@ function theEnd(concentration) {
         }
 
         newContent += "<p id='level' class='animated fadeInLeftBig slow'>Level <span>5</span></p>";
-        newContent += '<img class="bossglow animated fadeIn delay-1s slower" src="../images/light.png">';
+        newContent += '<img class="bossglow animated fadeIn delay-1s slower" src="images/light.png">';
         newContent += arrows;
         newContent += '</div>';
         content.innerHTML = newContent;
